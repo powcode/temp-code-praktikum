@@ -58,23 +58,29 @@ int main () {
     system("cls");
 
     do {
-        ReValidInt(&bil1, "Silahkan masukkan bilangan bulat pertama: ");
-        ReValidInt(&bil2, "Silahkan masukkan bilangan bulat kedua: ");
         operasi = validOperator(); // Mengambil input operator
 
         int validOperation = 1;
 
         switch (operasi) {
         case '+':
+            ReValidInt(&bil1, "Silahkan masukkan bilangan bulat pertama: ");
+            ReValidInt(&bil2, "Silahkan masukkan bilangan bulat kedua: ");
             hasil = bil1 + bil2;
             break;
         case '-':
+            ReValidInt(&bil1, "Silahkan masukkan bilangan bulat pertama: ");
+            ReValidInt(&bil2, "Silahkan masukkan bilangan bulat kedua: ");
             hasil = bil1 - bil2;
             break;
         case '*':
+            ReValidInt(&bil1, "Silahkan masukkan bilangan bulat pertama: ");
+            ReValidInt(&bil2, "Silahkan masukkan bilangan bulat kedua: ");
             hasil = bil1 * bil2;
             break;
         case '/':
+            ReValidInt(&bil1, "Silahkan masukkan bilangan bulat pertama: ");
+            ReValidInt(&bil2, "Silahkan masukkan bilangan bulat kedua (TIDAK BOLEH 0): ");
             if(bil2 == 0){
                 printf("Bilangan tidak bisa dibagi dengan 0\n");
                 validOperation = 0;
@@ -83,6 +89,8 @@ int main () {
             }
             break;
         case '%':
+            ReValidInt(&bil1, "Silahkan masukkan bilangan bulat pertama: ");
+            ReValidInt(&bil2, "Silahkan masukkan bilangan bulat kedua (TIDAK BOLEH 0): ");
             if(bil2 == 0){
                 printf("Bilangan tidak bisa di modulus dengan 0\n");
                 validOperation = 0;
