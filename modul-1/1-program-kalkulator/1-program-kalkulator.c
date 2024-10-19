@@ -21,27 +21,22 @@ void ReValidInt(int *var, char *prompt){
         if(validInt(var)){
             break;
         }
-        printf("Input tidak sesuai\n");
+        printf("Input hanya menerima bilangan bulat\n");
     }
 }
 
-char validOperator() {
-    char operasi;
-    while (1) {
-        printf("\nSilahkan pilih operasi (+, -, *, /, %%): ");
-        operasi = getchar();
-        fflush(stdin); // Membersihkan input buffer
-
-        if (operasi == '+' || operasi == '-' || operasi == '*' || operasi == '/' || operasi == '%') {
-            return operasi;
-        }
-        printf("Operator tidak valid! Masukkan operator yang benar.\n");
-    }
+void pilihanInput(){
+    printf("1 : Tambah\n");
+    printf("2 : Kurang\n");
+    printf("3 : Kali\n");
+    printf("4 : Bagi\n");
+    printf("5 : Modulus\n");
 }
+
 
 int main () {
-    int bil1, bil2, hasil;
-    char operasi;
+    int bil1, bil2, hasil, operasi;
+    char op;
     
     printf("================================================================\n");
     printf("===      Program Menghitung Bangun Ruang                     ===\n");
@@ -58,27 +53,32 @@ int main () {
     system("cls");
 
     do {
-        operasi = validOperator(); // Mengambil input operator
+        pilihanInput();
+        ReValidInt(&operasi, "Silahkan masukkan pilihan input : ");        
 
         int validOperation = 1;
 
         switch (operasi) {
-        case '+':
+        case 1:
+            op = '+';
             ReValidInt(&bil1, "Silahkan masukkan bilangan bulat pertama: ");
             ReValidInt(&bil2, "Silahkan masukkan bilangan bulat kedua: ");
             hasil = bil1 + bil2;
             break;
-        case '-':
+        case 2:
+            op ='-';
             ReValidInt(&bil1, "Silahkan masukkan bilangan bulat pertama: ");
             ReValidInt(&bil2, "Silahkan masukkan bilangan bulat kedua: ");
             hasil = bil1 - bil2;
             break;
-        case '*':
+        case 3:
+            op = '*';
             ReValidInt(&bil1, "Silahkan masukkan bilangan bulat pertama: ");
             ReValidInt(&bil2, "Silahkan masukkan bilangan bulat kedua: ");
             hasil = bil1 * bil2;
             break;
-        case '/':
+        case 4:
+            op = '/';
             ReValidInt(&bil1, "Silahkan masukkan bilangan bulat pertama: ");
             ReValidInt(&bil2, "Silahkan masukkan bilangan bulat kedua (TIDAK BOLEH 0): ");
             if(bil2 == 0){
@@ -88,7 +88,8 @@ int main () {
                 hasil = bil1 / bil2;
             }
             break;
-        case '%':
+        case 5:
+            op = '%%';
             ReValidInt(&bil1, "Silahkan masukkan bilangan bulat pertama: ");
             ReValidInt(&bil2, "Silahkan masukkan bilangan bulat kedua (TIDAK BOLEH 0): ");
             if(bil2 == 0){
@@ -105,7 +106,7 @@ int main () {
         }
 
         if(validOperation == 1){
-            printf("Hasil perhitungan %d %c %d adalah: %d\n", bil1, operasi, bil2, hasil);
+            printf("Hasil perhitungan %d %c %d adalah: %d\n", bil1, op, bil2, hasil);
         }
 
         int ulang;
